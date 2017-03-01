@@ -1,0 +1,70 @@
+New log file opened at Wed Mar 01 13:36:36 CET 2017 by 3444@058-PC
+Taking next connection to: 60106
+New client attempting to connect on port: 60107-60106
+  Address = /192.168.1.104:60106
+This client on port 60107 has uuid 4848fa48-6856-4d2a-883f-db62e62521d9 configName activator humanReadableName Activator protocolVersion 3 featureTags Vector()
+Connected Clients: activator-4848fa48-6856-4d2a-883f-db62e62521d9
+Taking next connection to: 60106
+New client attempting to connect on port: 60108-60106
+  Address = /192.168.1.104:60106
+Handshake exception on socket: 60108
+sbt.impl.ipc.HandshakeException: Unable to perform handshake
+	at sbt.impl.ipc.Peer.handshake(IPC.scala:46)
+	at sbt.impl.ipc.MultiClientServer.<init>(IPC.scala:150)
+	at sbt.server.SbtServerSocketHandler$$anon$1.run(SbtServerSocketHandler.scala:43)
+Caused by: java.net.SocketException: Software caused connection abort: recv failed
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
+	at java.net.SocketInputStream.read(SocketInputStream.java:170)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	at java.io.DataInputStream.readInt(DataInputStream.java:387)
+	at sbt.impl.ipc.Peer.receive(IPC.scala:95)
+	at sbt.impl.ipc.Peer.handshake(IPC.scala:49)
+	... 2 more
+Taking next connection to: 60106
+New client attempting to connect on port: 60109-60106
+  Address = /192.168.1.104:60106
+This client on port 60109 has uuid 43028ea6-2f3f-4e12-979d-74472b8709ae configName activator humanReadableName Activator protocolVersion 3 featureTags Vector()
+Connected Clients: activator-4848fa48-6856-4d2a-883f-db62e62521d9, activator-43028ea6-2f3f-4e12-979d-74472b8709ae
+Taking next connection to: 60106
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 60106
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 60106
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 60106
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 60106
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 60106
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 60106
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 60106
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 60106
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 60106
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 60106
+Checking to see if clients are empty...
+We have 1 non-daemon clients, continuing serving connections.
+Taking next connection to: 60106
+Checking to see if clients are empty...
+No non-daemon clients connected after 3 min. Shutting down.
+Server socket thread exiting.
+0 clients open, will close them...
+All client sockets have been closed.
+Closing the 3444@058-PC logs at Wed Mar 01 14:12:36 CET 2017, goodbye.

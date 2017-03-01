@@ -1,0 +1,132 @@
+@(user: User)(id_card_recover: java.lang.Integer)(util_recover: String)(projet: String)
+
+@main(user) {
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script src="@routes.Assets.at("javascripts/jquery.mobile.custom.min.js")"></script>
+    <script src="@routes.Assets.at("javascripts/jquery.mobile.custom.js")"></script>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+    <script src="@routes.Assets.at("javascripts/js/bootstrap.min.js")"></script>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="@routes.Assets.at("stylesheets/css/bootstrap.min.css")" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/css/bootstrap.min.css")">
+    <style>
+	.content-area {
+		position: relative;
+		width: 100%;
+		margin: 0 auto;
+	}
+  .carousel-indicators li {
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+  }
+  .carousel-indicators .active {
+    height: 25px;
+    width: 25px;
+  }
+	</style>
+
+<script>
+window.addEventListener("load",function() {
+	// Set a timeout...
+	setTimeout(function(){
+		// Hide the address bar!
+		window.scrollTo(0, 1);
+	}, 0);
+});
+</script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- @routes.Assets.at("javascripts/password.js") -->
+<script src="@routes.Assets.at("javascripts/jquery.mobile.custom.min.js")"></script>
+<script src="@routes.Assets.at("javascripts/jquery.mobile.custom.js")"></script>
+<script src="@routes.Assets.at("javascripts/js/bootstrap.min.js")"></script>
+
+<script>
+//alert('util_recover:@{util_recover}');
+//alert('projet:@{projet}');
+var num_face = 1;//3 si remplissage d'un commentaire
+var num_carte = @{id_card_recover};
+var util = "@{util_recover}";
+var projet = "@{projet}";
+var origin;
+var comment_exists = false;
+</script>
+
+<!-- <input type="button" onclick="show_alert()" value="Show alert box" /> -->
+<!-- <img src='../res/drawable/plan.png' /> -->
+<!-- You scored <b>192</b> points.-->
+
+
+<form class="navbar-form navbar-left" role="search" style="display:inline" >
+    <center>
+        <div>
+        <img id="entete" src='@routes.Assets.at("images/drawable/yingyong.png")' style="width: 30%;margin:0 auto">
+        </div>
+    </center>
+    <div class="text_form">
+        <p>Merci d'avoir complété ton RampUp mission.</p>
+        <br/>
+        <p>Tu recevras un mail avec la synthèse de tes réponses. !</p>
+    </div>
+    <br/>
+    <center><button id="finish" type="submit" class="btn btn-default">Retour Accueil</button></center>
+</form>
+
+<script>
+</script>
+
+<script>
+
+
+    $('#finish').on('click', function(event) {
+        retour_accueil();
+        event.preventDefault();
+    });
+    
+    
+function retour_accueil() {
+    
+    window.num_carte=window.num_carte+1;
+    
+     
+    //Création dynamique du formulaire
+    var form = document.createElement("form");
+    //alert('debug 2:'+form);
+    form.setAttribute("method", "POST");
+
+    form.setAttribute("action", "accueil");
+    
+    var champCacheUtil = document.createElement("input");
+    champCacheUtil.setAttribute("type", "hidden");
+    champCacheUtil.setAttribute("name", "util");
+    champCacheUtil.setAttribute("value", window.util);
+    
+    form.appendChild(champCacheUtil);
+    document.body.appendChild(form);
+    form.submit();
+
+}
+
+
+	</script>
+    
+    
+
+}

@@ -1,0 +1,412 @@
+@(user: User)(id_card_recover: java.lang.Integer)(util_recover: String)(projet: String)
+
+@main(user) {
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script src="@routes.Assets.at("javascripts/jquery.mobile.custom.min.js")"></script>
+    <script src="@routes.Assets.at("javascripts/jquery.mobile.custom.js")"></script>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+    <script src="@routes.Assets.at("javascripts/js/bootstrap.min.js")"></script>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="@routes.Assets.at("stylesheets/css/bootstrap.min.css")" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/css/bootstrap.min.css")">
+    <style>
+	.content-area {
+		position: relative;
+		width: 100%;
+		margin: 0 auto;
+	}
+  .carousel-indicators li {
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+  }
+  .carousel-indicators .active {
+    height: 25px;
+    width: 25px;
+  }
+	</style>
+
+<script>
+window.addEventListener("load",function() {
+	// Set a timeout...
+	setTimeout(function(){
+		// Hide the address bar!
+		window.scrollTo(0, 1);
+	}, 0);
+});
+
+function generate_images() {
+        //alert('OK');
+                 var elmt = document.getElementsByClassName("btn-group");
+		        elmt[0].style.display = 'none';
+		        window.num_face=1;
+		        
+                var elmt_form = document.getElementsByClassName("navbar-form");
+                elmt_form[0].style.display = 'none';
+
+                var elmt = document.getElementsByClassName("text_back");
+		        elmt[0].style.display = 'none';
+		        var elmt = document.getElementsByClassName("text_face");
+		        elmt[0].style.display = 'inline';
+                var elmt = document.getElementsByClassName("text_form");
+		        elmt[0].style.display = 'none';
+
+		        var elmt2 = document.getElementsByClassName("content-area");
+                elmt2[0].style.display = 'inline';
+
+		        var elmt_front = document.getElementById('CardFront');
+		        //alert('elmt:'+elmt);
+		        elmt_front.src='/assets/images/drawable/card_front_'+window.num_carte+'.png';
+
+		        var elmt_back = document.getElementById('CardBack');
+		        elmt_back.src='/assets/images/drawable/card_back_'+window.num_carte+'.png';
+		        
+		        
+		        var elmt_formulaire_projet = document.getElementById('formulaire_projet');
+		        elmt_formulaire_projet.value="@{projet}";
+		        
+		        //Deux dernières lignes inutiles ?
+		        var elmt_formulaire_id = document.getElementById('formulaire_id');
+		        elmt_formulaire_id.value=window.num_carte+1;
+		        
+		        var elmt_formulaire_util = document.getElementById('formulaire_util');
+		        elmt_formulaire_util.value="@{util_recover}";
+        
+};
+</script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- @routes.Assets.at("javascripts/password.js") -->
+<script src="@routes.Assets.at("javascripts/jquery.mobile.custom.min.js")"></script>
+<script src="@routes.Assets.at("javascripts/jquery.mobile.custom.js")"></script>
+<script src="@routes.Assets.at("javascripts/js/bootstrap.min.js")"></script>
+
+<script>
+//alert('util_recover:@{util_recover}');
+//alert('projet:@{projet}');
+var num_face = 1;//3 si remplissage d'un commentaire
+var num_carte = @{id_card_recover};
+var util = "@{util_recover}";
+var projet = "@{projet}";
+var origin;
+var comment_exists = false;
+</script>
+
+<!-- <input type="button" onclick="show_alert()" value="Show alert box" /> -->
+<!-- <img src='../res/drawable/plan.png' /> -->
+<!-- You scored <b>192</b> points.-->
+
+<div class="content-area">
+    <div id="myCarousel" class="carousel slide">
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+               <!-- <img src="http://placekitten.com/300/200">-->
+                <img id="CardFront" src='@routes.Assets.at("images/drawable/card_front_1.png")' style="width: 80%;margin:0 auto">
+            </div>
+            <div class="item">
+                <img id="CardBack" src='@routes.Assets.at("images/drawable/card_back_1.png")' style="width: 80%;margin:0 auto">
+            </div>
+        </div>
+    </div>
+</div>
+<!--</div>-->
+
+<div class="text_form" style="display:none">
+    <br/>
+    <p>Indiquez les raisons de votre choix</p>
+</div>
+<form class="navbar-form navbar-left" role="search" style="display:none" method="post">
+    <textarea id="formulaire_text_form" class="form-control" name="text_form" rows="3"></textarea>
+<!--    <div class="form-group"> -->
+        <!-- <input type="text" name="comment" class="form-control" placeholder="Commentaire"> -->
+<!--         <input id="formulaire_id" type="hidden" name="id" class="form-control" value="7" placeholder="Search"> -->
+<!--         <input id="formulaire_util" type="hidden" name="util" class="form-control" value="user" placeholder="Search"> -->
+<!--         <input id="formulaire_projet" type="hidden" name="projet" class="form-control" value="proj" placeholder="Search"> -->
+<!--         <input id="formulaire_origin" type="hidden" name="origin" class="form-control" value="ori" placeholder="Search"> -->
+ <!--   </div> -->
+    <br/>
+    <center><button id="subm" type="submit" class="btn btn-default">Enregistrer</button></center>
+</form>
+
+<!-- btn-group-justified -->
+<div style="width: 80%;margin:0 auto">
+<div class="btn-group btn-group-justified" role="group" aria-label="..." style="display:none;width: 80%;margin:0 auto">
+    <div class="btn-group" role="group">
+        <button id="ok" type="button" class="btn btn-default" style="color: white;font-size: 16px;background-color: #4CAF50">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ok&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    </div>
+    <div class="btn-group" role="group">
+    <button id="vigilence" type="button" class="btn btn-default" style="color: white;font-size: 16px;background-color: #FFA500">Vigilence</button>
+    </div>
+    <div class="btn-group" role="group">
+    <button id="problem" type="button" class="btn btn-default" style="color: white;font-size: 16px;background-color: #ff0000">Problème</button>
+    </div>
+</div>
+</div>
+
+<div class="text_face">
+    <br/>
+        <p><i>Faites glisser vers la gauche pour retourner la carte.</i></p>
+    </div>
+<div class="text_back" style="display:none">
+    <br/>
+    <p>Evaluer la criticité de ce thème dans votre situation actuelle. <i>Faites glisser vers la droite pour revoir la face avant de la carte.</i></p>
+</div>
+
+<script>
+generate_images();
+</script>
+
+<script>
+	$(document).ready(function() {
+  		 $(".carousel-inner").swiperight(function() {
+  		// alert("Swiperight");
+
+
+                if(window.num_face==2)
+                {
+                    var elmt = document.getElementsByClassName("btn-group");
+		            elmt[0].style.display = 'none';
+		            window.num_face=1;
+		            $(this).parent().carousel('prev');
+
+		            var elmt_text_face = document.getElementsByClassName("text_face");
+		            elmt_text_face[0].style.display = 'inline';
+
+		            var elmt_text_back = document.getElementsByClassName("text_back");
+		            elmt_text_back[0].style.display = 'none';
+                }
+
+	    		});
+		   $(".carousel-inner").swipeleft(function() {
+		 //  alert("Swipeleft");
+
+
+                if(window.num_face==1)
+                {
+                    var elmt = document.getElementsByClassName("btn-group");
+		            elmt[0].style.display = 'inline';
+		            window.num_face=2;
+		            $(this).parent().carousel('next');
+
+		            var elmt_text_back = document.getElementsByClassName("text_back");
+		            elmt_text_back[0].style.display = 'inline';
+
+		            var elmt_text_face = document.getElementsByClassName("text_face");
+		            elmt_text_face[0].style.display = 'none';
+                }
+
+	   });
+	});
+
+   $('#ok').on('click', function(event) {
+        go_to_next_card();
+        event.preventDefault(); // To prevent following the link (optional)
+    });
+
+    $('#vigilence').on('click', function(event) {
+        go_to_comment_vigilence();
+        event.preventDefault(); // To prevent following the link (optional)
+    });
+    $('#problem').on('click', function(event) {
+        go_to_comment_problem();
+        event.preventDefault(); // To prevent following the link (optional)
+    });
+
+    $('#subm').on('click', function(event) {
+         envoi_comment();
+        event.preventDefault();
+    });
+
+
+
+
+function go_to_comment_vigilence() {
+        //alert('OK');
+        var elmt = document.getElementsByClassName("btn-group");
+        elmt[0].style.display = 'none';
+        window.num_face=3;
+        var elmt2 = document.getElementsByClassName("content-area");
+        elmt2[0].style.display = 'none';
+
+        var elmt_form = document.getElementsByClassName("navbar-form");
+        elmt_form[0].style.display = 'inline';
+
+        var elmt = document.getElementsByClassName("text_back");
+		elmt[0].style.display = 'none';
+		var elmt = document.getElementsByClassName("text_face");
+		elmt[0].style.display = 'none';
+		var elmt = document.getElementsByClassName("text_form");
+		elmt[0].style.display = 'inline';
+		
+		//var elmt_formulaire_origin = document.getElementById('formulaire_origin');
+		//elmt_formulaire_origin.value="vigilence";
+		
+		window.origin="vigilence";
+		
+}
+
+function go_to_comment_problem() {
+        //alert('OK');
+        var elmt = document.getElementsByClassName("btn-group");
+        elmt[0].style.display = 'none';
+        window.num_face=3;
+        var elmt2 = document.getElementsByClassName("content-area");
+        elmt2[0].style.display = 'none';
+
+        var elmt_form = document.getElementsByClassName("navbar-form");
+        elmt_form[0].style.display = 'inline';
+
+        var elmt = document.getElementsByClassName("text_back");
+		elmt[0].style.display = 'none';
+		var elmt = document.getElementsByClassName("text_face");
+		elmt[0].style.display = 'none';
+		var elmt = document.getElementsByClassName("text_form");
+		elmt[0].style.display = 'inline';
+		
+		//var elmt_formulaire_origin = document.getElementById('formulaire_origin');
+		//elmt_formulaire_origin.value="problem";	
+		
+		window.origin="problem";
+}
+
+
+function go_to_next_card() {
+    
+    window.num_carte=window.num_carte+1;
+
+    //alert('debug');
+     
+    //Création dynamique du formulaire
+    var form = document.createElement("form");
+    //alert('debug 2:'+form);
+    form.setAttribute("method", "POST");
+    //alert('debug 2.1');
+    //form.setAttribute("action", "http://ec2-35-165-79-196.us-west-2.compute.amazonaws.com:8080/dashboard");
+    if(window.num_carte < 31){
+        form.setAttribute("action", "dashboard");
+    }else{
+        form.setAttribute("action", "synthese");
+    }
+    
+    var champCacheId = document.createElement("input");
+    
+    champCacheId.setAttribute("type", "hidden");
+    champCacheId.setAttribute("name", "id");
+    champCacheId.setAttribute("value", window.num_carte);
+    
+    var champCacheUtil = document.createElement("input");
+    champCacheUtil.setAttribute("type", "hidden");
+    champCacheUtil.setAttribute("name", "util");
+    champCacheUtil.setAttribute("value", window.util);
+    
+    var champCacheProjet = document.createElement("input");
+    champCacheProjet.setAttribute("type", "hidden");
+    champCacheProjet.setAttribute("name", "projet");
+    champCacheProjet.setAttribute("value", window.projet);
+    
+    //alert('debug 4');
+    form.appendChild(champCacheId);
+    form.appendChild(champCacheUtil);
+    form.appendChild(champCacheProjet);
+    document.body.appendChild(form);
+    //alert('debug 5');
+    
+    form.submit();
+    
+    //Ajout des paramètres sous forme de champs cachés
+    //alert('debug 3');
+    
+
+//alert('window.num_face:'+window.num_face);
+//alert('window.num_carte:'+window.num_carte);
+
+}
+
+function envoi_comment() {
+
+    //alert('debug');
+
+    window.num_carte=window.num_carte+1;
+    
+
+    //Création dynamique du formulaire
+    var form = document.createElement("form");
+    //alert('debug 2:'+form);
+    form.setAttribute("method", "POST");
+    //alert('debug 2.1');
+    if(window.num_carte < 31){
+        //form.setAttribute("action", "http://ec2-35-165-79-196.us-west-2.compute.amazonaws.com:8080/dashboard");
+        form.setAttribute("action", "dashboard");
+    }else{
+        form.setAttribute("action", "synthese");
+    }
+
+    //Ajout des paramètres sous forme de champs cachés
+    //alert('debug 3');
+    var champCacheId = document.createElement("input");
+    champCacheId.setAttribute("type", "hidden");
+    champCacheId.setAttribute("name", "id");
+    champCacheId.setAttribute("value", window.num_carte);
+    
+    var champCacheUtil = document.createElement("input");
+    champCacheUtil.setAttribute("type", "hidden");
+    champCacheUtil.setAttribute("name", "util");
+    champCacheUtil.setAttribute("value", window.util);
+    
+    var champCacheProjet = document.createElement("input");
+    champCacheProjet.setAttribute("type", "hidden");
+    champCacheProjet.setAttribute("name", "projet");
+    champCacheProjet.setAttribute("value", window.projet);
+    
+    var champCacheOrigin = document.createElement("input");
+    champCacheOrigin.setAttribute("type", "hidden");
+    champCacheOrigin.setAttribute("name", "origin");
+    champCacheOrigin.setAttribute("value", window.origin);
+    
+    var elmt_formulaire_text_form = document.getElementById('formulaire_text_form');
+    
+    var champCacheText_form = document.createElement("input");
+    champCacheText_form.setAttribute("type", "hidden");
+    champCacheText_form.setAttribute("name", "text_form");
+    champCacheText_form.setAttribute("value", elmt_formulaire_text_form.value);
+    
+    //alert('debug 4');
+    form.appendChild(champCacheId);
+    form.appendChild(champCacheUtil);
+    form.appendChild(champCacheProjet);
+    form.appendChild(champCacheOrigin);
+    form.appendChild(champCacheText_form);
+    
+    document.body.appendChild(form);
+    //alert('debug 5');
+    
+    form.submit();
+
+    //alert('window.num_face:'+window.num_face);
+    //alert('window.num_carte:'+window.num_carte);
+
+}
+
+	</script>
+    
+    
+
+}
